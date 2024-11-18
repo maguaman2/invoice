@@ -1,6 +1,7 @@
 package com.example.invoice_project.controller
 
 import com.example.invoice_project.entity.Customer
+import com.example.invoice_project.entity.Invoice
 import com.example.invoice_project.service.CustomerService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
@@ -27,6 +28,10 @@ class CustomerController {
         return customerService.save(customer)
     }
 
-
+    //Store - Aditional resources
+    @GetMapping("/{id}/invoices")
+    fun findInvoicesByCustomerId(@PathVariable id: Long): List<Invoice>?{
+        return customerService.findInvoicesByCustomerId(id)
+    }
 
 }
